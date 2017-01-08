@@ -33,7 +33,13 @@ namespace CmdTool
         /// </summary>
         private struct FieldDesc
         {
+            // Public class member metadata, 
+            // provides type information.
             public FieldInfo Field;
+
+            // Store data from Option attribute,
+            // we will use this to auto generate,
+            // documentation for the class.
             public Option Option;
 
             public FieldDesc(FieldInfo field, Option option)
@@ -48,7 +54,11 @@ namespace CmdTool
         /// </summary>
         private struct CmdDesc
         {
+            // Class type, used for instantiation.
             public Type CmdType;
+
+            // Collection of all public class members,
+            // anything else is encapsulated,
             public Dictionary<string, FieldDesc> Fields;
 
             public CmdDesc(Type type, Dictionary<string, FieldDesc> fields)
@@ -73,9 +83,16 @@ namespace CmdTool
                 return new ErrorCommand((args.Length > 1) ? Load.GetHelp(args[1]) : Load.GetHelp());
             }
 
+            // Search collection for first command.
             var cmdString = args.First();
-            CmdDesc command = CommandDictionary[args.First()];
+            CmdDesc command = CommandDictionary[cmdString];
+
+            // Instantiate
             dynamic val = Activator.CreateInstance(command.CmdType);
+
+            // Fields should have a default value,
+            // for any additional arguments we check
+            // and set corresponding field.
             for (var i = 1; i < args.Length; ++i)
             {
                 if (!args[i].StartsWith("-"))
@@ -102,8 +119,11 @@ namespace CmdTool
 
         public static string GetHelp()
         {
+            // Usage information.
             var ret = "usage: miso <command> [<args>]\n\n" +
                          "Available commands:\n";
+
+            // Print command metadata, as described by CmdDescription attribute.
             foreach (KeyValuePair<string, CmdDesc> elem in CommandDictionary)
             {
                 IEnumerable<CmdDescription> description =
@@ -113,12 +133,17 @@ namespace CmdTool
             ret += "\nUse 'miso help <command>' for additional information.\n";
             return ret;
         }
+
         public static string GetHelp(string type)
         {
+            // Command description,
+            // we can append multiple CmdDescription attributes.
             CmdDesc command = CommandDictionary[type];
             IEnumerable<CmdDescription> usage =
                 command.CmdType.GetCustomAttributes<CmdDescription>(false);
             var ret = usage.Aggregate("", (current, elem) => current + $"{elem.Description}\n");
+
+            // Command input metadata
             return command.Fields.Aggregate(
                 ret + "\n",
                 (current, elem) => current + $"    {elem.Value.Option.Command}\t\t{elem.Value.Option.Description}\n");
@@ -131,6 +156,8 @@ namespace CmdTool
                     type => ((CmdTool) Attribute.GetCustomAttribute(type, typeof(CmdTool))).Command,
                     type =>
                     {
+                        // Get all fields in current Type with Option attribute,
+                        // store field metadata.
                         IEnumerable<FieldDesc> fields =
                             from fld in type.GetFields()
                             from opt in fld.GetCustomAttributes<Option>()
@@ -142,6 +169,7 @@ namespace CmdTool
 
         private static IEnumerable<Type> GetTypesWith<TAttribute>(bool inherit)
         {
+            // Scan assembly for any Type with TAttribute
             return
                 from assembly in AppDomain.CurrentDomain.GetAssemblies()
                 from types in assembly.GetTypes()

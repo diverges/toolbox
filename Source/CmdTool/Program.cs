@@ -5,6 +5,20 @@ using CmdTool;
 
 namespace CmdTool
 {
+
+    [CmdTool("SimpleCommand")]
+    [CmdDescription("Description of command.")]
+    class SimpleCommand : ICommand
+    {
+        [Option("-v", "Allow input arguments too")]
+        public bool Verbose = false;
+
+        public void Run()
+        {
+            Console.WriteLine(Verbose);
+        }
+    }
+
     [CmdTool("test")]
     [CmdDescription("This is a simple test class with some arguments.")]
     [CmdDescription("usage: TestCommand1 [<options] <directory>")]
@@ -72,6 +86,7 @@ namespace CmdTool
             }
             catch (Exception e)
             {
+                // Any issues float to here...
                 Console.WriteLine(e.Message);
             }
         }
