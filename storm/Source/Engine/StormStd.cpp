@@ -1,0 +1,8 @@
+//===============================================
+// Storm.h : Precompile Header
+//===============================================
+
+#include "StormStd.h"
+
+const int SCREEN_WIDTH = 800;
+const int SCREEN_HEIGHT = 600;
