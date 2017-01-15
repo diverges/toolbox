@@ -4,9 +4,7 @@
 namespace Debug 
 {
 
-FILE* hf_out;
-
-void Init()
+void DebugConsole::Init()
 {
     AllocConsole();
 
@@ -16,7 +14,7 @@ void Init()
     setvbuf(hf_out, NULL, _IONBF, 1);
 }
 
-void Destroy()
+void DebugConsole::Destroy()
 {
     fclose(hf_out);
     SAFE_DELETE(hf_out);

@@ -5,15 +5,17 @@
 //
 //=============================================================================
 
-///////////////////////////////////////////////////////////////////////////////
-//
 //  Input Managers : Public APIs for any object that implements reactions
 //                   to events sent by hardware to user interface.
-//
-///////////////////////////////////////////////////////////////////////////////
 class IKeyboardHandler
 {
 public:
-    virtual bool VOnKeyDown(const BYTE c)=0;
-    virtual bool VOnKeyUp(const BYTE c)=0;
+    virtual bool VOnKeyDown(const BYTE c) = 0;
+    virtual bool VOnKeyUp(const BYTE c) = 0;
+};
+
+//  Game Logic : Base actor functions.
+class IGameLogic
+{
+    virtual void VOnUpdate(float time, float elapsedTime) = 0;
 };

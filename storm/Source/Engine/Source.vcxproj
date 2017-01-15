@@ -163,6 +163,7 @@
     <ClInclude Include="GraphicsCommon\DeviceResources.h" />
     <ClInclude Include="GraphicsCommon\DXHelper.h" />
     <ClInclude Include="SimplePixelShader.h" />
+    <ClInclude Include="Storm\BaseGameLogic.h" />
     <ClInclude Include="Storm\Interfaces.h" />
     <ClInclude Include="Storm\Storm.h" />
     <ClInclude Include="TexVertexShader.h" />
@@ -179,6 +180,7 @@
     <ClCompile Include="Graphics3D\D3DRender.cpp" />
     <ClCompile Include="GraphicsCommon\DeviceResources.cpp" />
     <ClCompile Include="GraphicsCommon\DXHelper.cpp" />
+    <ClCompile Include="Storm\BaseGameLogic.cpp" />
     <ClCompile Include="Storm\Storm.cpp" />
     <ClCompile Include="Storm\StormApp.cpp" />
     <ClCompile Include="StormStd.cpp">
@@ -189,7 +191,6 @@
     </ClCompile>
     <ClCompile Include="Utilities\MathHelper.cpp" />
     <ClCompile Include="Utilities\Math_Random.cpp" />
-    <ClCompile Include="Test\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shaders\PointVertexShader.hlsl">

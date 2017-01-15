@@ -1,9 +1,9 @@
 #pragma once
+#include <unordered_map>
+
 #include "..\Debugger\DebugConsole.h"
 #include "..\Utilities\GameTimer.h"
 #include "..\Utilities\MathHelper.h"
-
-#include <unordered_map>
 
 namespace DX
 {
@@ -79,17 +79,7 @@ namespace DX
         static const DirectX::XMFLOAT3 Magenta  = { 1.0f, 0.0f, 1.0f };
     }
 
-    inline void ThrowIfFailed(HRESULT hr)
-    {
-#if defined(DEBUG) || defined(_DEBUG)
-        if (FAILED(hr)) 
-        {
-            CONSOLE_OUT("DX error hr: %x\n", (int)hr);
-        }
-#endif    
-    }    
+    void ThrowIfFailed(HRESULT hr);
 
     int CalculateFrameStats(const DX::GameTimer& timer);
-
-
 }

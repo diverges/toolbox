@@ -50,6 +50,7 @@ extern const int SCREEN_HEIGHT;
 #define SAFE_RELEASE(x) if(x) x->Release(); x=NULL;
 #endif
 
+#include "Storm\Interfaces.h"
 #include "Storm\Storm.h"
 
 extern INT WINAPI Storm(HINSTANCE hInstance,

@@ -59,7 +59,7 @@ void DX::DeviceResources::CreateDeviceResources()
 
 void DX::DeviceResources::CreateWindowDependentResources()
 {
-    CONSOLE_OUT("\n\nStarting window dependent device resources creation ---\n");
+    g_pApp->DebugLog("\n\nStarting window dependent device resources creation ---\n");
 
     // Create Swap Chain
     if (m_swapChain == nullptr)
@@ -86,7 +86,7 @@ void DX::DeviceResources::CreateWindowDependentResources()
         sd.Windowed = true;
         sd.SwapEffect = DXGI_SWAP_EFFECT_FLIP_SEQUENTIAL;
 
-        CONSOLE_OUT("\tCreating Swap chain...\n");
+        g_pApp->DebugLog("\tCreating Swap chain...\n");
 
         // Obtain DXGI factory used to create Direct3D devices
         Microsoft::WRL::ComPtr<IDXGIDevice> dxgiDevice;
@@ -117,7 +117,7 @@ void DX::DeviceResources::CreateWindowDependentResources()
             swapChain.As(&m_swapChain)
         );
 
-        CONSOLE_OUT("\tSwap chain built...\n");
+        g_pApp->DebugLog("\tSwap chain built...\n");
 
     }
 
@@ -134,7 +134,7 @@ void DX::DeviceResources::CreateWindowDependentResources()
         )
     );
 
-    CONSOLE_OUT("\tRender target view built...\n");
+    g_pApp->DebugLog("\tRender target view built...\n");
 
     // Create depth stencil view
     // Create a depth stencil view for use with 3D rendering if needed.
@@ -169,7 +169,7 @@ void DX::DeviceResources::CreateWindowDependentResources()
         )
     );
 
-    CONSOLE_OUT("\tDepth stencil view built...\n");
+    g_pApp->DebugLog("\tDepth stencil view built...\n");
 
     // Set viewport
     m_viewPort = CD3D11_VIEWPORT(
@@ -180,7 +180,7 @@ void DX::DeviceResources::CreateWindowDependentResources()
     );
     m_context->RSSetViewports(1, &m_viewPort);
 
-    CONSOLE_OUT("\tView port built...\n");
+    g_pApp->DebugLog("\tView port built...\n");
 
 }
 

@@ -69,11 +69,11 @@
     <ClInclude Include="GraphicsCommon\DXHelper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Storm\BaseGameLogic.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Test\Main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="StormStd.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -102,6 +102,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GraphicsCommon\DXHelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Storm\BaseGameLogic.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

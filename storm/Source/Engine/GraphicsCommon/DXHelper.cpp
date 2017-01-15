@@ -25,6 +25,16 @@ Microsoft::WRL::ComPtr<ID3D11Buffer> DX::CreateDefaultBuffer(ID3D11Device * devi
     return defaultBuffer;
 }
 
+void DX::ThrowIfFailed(HRESULT hr)
+{
+#if defined(DEBUG) || defined(_DEBUG)
+    if (FAILED(hr))
+    {
+        g_pApp->DebugLog("DX error hr: %x\n", (int)hr);
+    }
+#endif    
+}
+
 int DX::CalculateFrameStats(const DX::GameTimer& timer)
 {
     static int frameCnt = 0;
@@ -37,7 +47,7 @@ int DX::CalculateFrameStats(const DX::GameTimer& timer)
         float fps = (float)frameCnt;
         float mspf = 1000 / fps;
 
-        CONSOLE_OUT("[ Total Time: %f - FPS: %f - Fametime: %f ]\n", timer.GetTotalTime(), fps, mspf);
+        g_pApp->DebugLog("[ Total Time: %f - FPS: %f - Fametime: %f ]\n", timer.GetTotalTime(), fps, mspf);
 
         frameCnt = 0;
         timeElapsed += 1.0f;

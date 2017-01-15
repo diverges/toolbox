@@ -13,7 +13,7 @@ DX::D3DRender::D3DRender(const std::shared_ptr<DX::DeviceResources>& device) :
 void DX::D3DRender::CreateDeviceResources()
 {
 
-    CONSOLE_OUT("\n\nStarting D3DRender creation---\n");
+    g_pApp->DebugLog("\n\nStarting D3DRender creation---\n");
 
     //
     // Input Layouts
@@ -33,7 +33,7 @@ void DX::D3DRender::CreateDeviceResources()
             &m_inputLayout
         )
     );
-    CONSOLE_OUT("\tInput layout built...\n");
+    g_pApp->DebugLog("\tInput layout built...\n");
 
     //
     // Constant Buffer : perObject
@@ -54,7 +54,7 @@ void DX::D3DRender::CreateDeviceResources()
             &m_frameCB
         )
     );
-    CONSOLE_OUT("\tConstant buffer built...\n");
+    g_pApp->DebugLog("\tConstant buffer built...\n");
 
     
     // HACK :
@@ -109,10 +109,10 @@ void DX::D3DRender::CreateDeviceResources()
     CopyMemory(m_demoMesh->IndexBufferCPU->GetBufferPointer(), &grid.vertices[0], idbByteSize);
 
     m_demoMesh->VertexBufferGPU = DX::CreateDefaultBuffer(m_deviceResources->GetD3Device(), vertices.data(), vbdByteSize, D3D11_BIND_VERTEX_BUFFER);
-    CONSOLE_OUT("\tVertex buffer built...\n");
+    g_pApp->DebugLog("\tVertex buffer built...\n");
 
     m_demoMesh->IndexBufferGPU = DX::CreateDefaultBuffer(m_deviceResources->GetD3Device(), grid.indices.data(), idbByteSize, D3D11_BIND_INDEX_BUFFER);
-    CONSOLE_OUT("\tIndex buffer built...\n");
+    g_pApp->DebugLog("\tIndex buffer built...\n");
 
     m_demoMesh->VertexBufferStride = sizeof(PointVertex);
     m_demoMesh->VertexBufferByteSize = vbdByteSize;
@@ -146,7 +146,7 @@ void DX::D3DRender::CreateDeviceResources()
     DX::ThrowIfFailed(
         m_deviceResources->GetD3Device()->CreatePixelShader(&g_ps_simple, ARRAYSIZE(g_ps_simple), nullptr, &m_pixelShader)
     );
-    CONSOLE_OUT("\tVertex and pixel shader built...\n");
+    g_pApp->DebugLog("\tVertex and pixel shader built...\n");
     
 }
 

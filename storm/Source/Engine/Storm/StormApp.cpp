@@ -20,6 +20,14 @@ StormApp *g_pApp = nullptr;
 StormApp::StormApp()
 {
     g_pApp = this;
+    m_pGame = nullptr;
+}
+
+StormApp::~StormApp()
+{
+#ifdef _DEBUG
+    m_debugConsole.Destroy();
+#endif
 }
 
 bool StormApp::InitInstance(HINSTANCE hInstance, LPWSTR lpCmdLine, HWND hWnd, int screenWidth, int screenHeight, int nCmdShow)
@@ -27,10 +35,7 @@ bool StormApp::InitInstance(HINSTANCE hInstance, LPWSTR lpCmdLine, HWND hWnd, in
 
     // Init Debugger
 #ifdef _DEBUG
-    Debug::Init();
-    CONSOLE_OUT("***\n");
-    CONSOLE_OUT("*** Debug Console\n");
-    CONSOLE_OUT("***\n");
+    m_debugConsole.Init();
 #endif
 
     // TODO: Check Resources
@@ -63,7 +68,9 @@ bool StormApp::InitInstance(HINSTANCE hInstance, LPWSTR lpCmdLine, HWND hWnd, in
         m_bIsRunning = true;
     }
 
-    // TODO: Create Game View
+    // Create game views
+    m_pGame = VCreateGameAndView();
+
 
     // All resources have been loaded
     // start timer
@@ -109,8 +116,7 @@ void StormApp::Tick()
     //
     //// Update scene 
     // TODO
-
-
+    m_pGame->VOnUpdate(m_timer.GetTotalTime(), m_timer.GetDeltaTime());
 }
 
 bool StormApp::Render()
@@ -127,7 +133,18 @@ void StormApp::Present()
     m_deviceResources->Present();
 }
 
-//----------------------------------------------------------
+//---------------------------------------------------------
+// Util
+//
+void StormApp::DebugLog(char* fmt, ...)
+{
+    va_list args;
+    va_start(args, fmt);
+    fprintf((m_debugConsole.hf_out), fmt, args);
+    va_end(args);
+}
+
+//---------------------------------------------------------
 // SDL Callback Function
 //
 // Main event handler for SDL
