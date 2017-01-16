@@ -5,6 +5,8 @@
 
 #include "StormStd.h"
 
+using namespace GameCore;
+
 INT WINAPI Storm(HINSTANCE hInstance,
                  HINSTANCE hPrevInstance,
                  LPWSTR lpCmdLine,

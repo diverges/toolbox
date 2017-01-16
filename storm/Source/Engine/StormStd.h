@@ -50,6 +50,7 @@ extern const int SCREEN_HEIGHT;
 #define SAFE_RELEASE(x) if(x) x->Release(); x=NULL;
 #endif
 
+// Base Classes
 #include "Storm\Interfaces.h"
 #include "Storm\Storm.h"
 

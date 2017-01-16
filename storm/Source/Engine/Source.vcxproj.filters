@@ -72,6 +72,12 @@
     <ClInclude Include="Storm\BaseGameLogic.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AI\State.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Storm\BaseGameEntity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="StormStd.cpp">

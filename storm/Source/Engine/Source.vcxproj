@@ -154,6 +154,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AI\State.h" />
     <ClInclude Include="Debugger\DebugConsole.h" />
     <ClInclude Include="Geometry\GeometryHelper.h" />
     <ClInclude Include="PointVertexShader.h" />
@@ -163,6 +164,7 @@
     <ClInclude Include="GraphicsCommon\DeviceResources.h" />
     <ClInclude Include="GraphicsCommon\DXHelper.h" />
     <ClInclude Include="SimplePixelShader.h" />
+    <ClInclude Include="Storm\BaseGameEntity.h" />
     <ClInclude Include="Storm\BaseGameLogic.h" />
     <ClInclude Include="Storm\Interfaces.h" />
     <ClInclude Include="Storm\Storm.h" />

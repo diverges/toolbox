@@ -1,6 +1,8 @@
 #include "StormStd.h"
 #include "BaseGameLogic.h"
 
+using namespace GameCore;
+
 BaseGameLogic::BaseGameLogic()
 {
     m_Lifetime = 0.0f;

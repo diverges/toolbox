@@ -1,18 +1,23 @@
 #pragma once
+#include "Knight.h"
 
-class BlitzApp : public StormApp
+class BlitzApp : public GameCore::StormApp
 {
 public:
-    virtual TCHAR *VGetGameTitle() { return _T("Teapot Wars"); }
-    virtual TCHAR *VGetGameAppDirectory() { return _T("Game Coding Complete 4\\Teapot Wars\\4.0"); }
+    virtual TCHAR *VGetGameTitle() { return _T("AI Test"); }
+    virtual TCHAR *VGetGameAppDirectory() { return _T("FSM Logic"); }
     virtual HICON  VGetIcon(){ return 0; }
 
 protected:
-    virtual std::unique_ptr<BaseGameLogic> VCreateGameAndView();
+    virtual std::unique_ptr<GameCore::BaseGameLogic> VCreateGameAndView();
 };
 
-class BlitzLogic : public BaseGameLogic
+class BlitzLogic : public GameCore::BaseGameLogic
 {
 public:
+    BlitzLogic() : m_knight(0) {}
     virtual void VOnUpdate(float time, float elapsedTime);
+
+private:
+    Knight m_knight;
 };

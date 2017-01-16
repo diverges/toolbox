@@ -18,12 +18,16 @@ INT WINAPI wWinMain(HINSTANCE hInstance,
 }
 //=========================================================
 
+using namespace GameCore;
+
 //---------------------------------------------------------
 // Game App
 //
 void BlitzLogic::VOnUpdate(float time, float elapsedTime)
 {
     BaseGameLogic::VOnUpdate(time, elapsedTime);
+    m_knight.Update();
+    Sleep(800);
 }
 
 std::unique_ptr<BaseGameLogic> BlitzApp::VCreateGameAndView()

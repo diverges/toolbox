@@ -8,6 +8,7 @@
 #include "Debugger\DebugConsole.h"
 #endif 
 
+using namespace GameCore;
 using Microsoft::WRL::ComPtr;
 
 StormApp *g_pApp = nullptr;
