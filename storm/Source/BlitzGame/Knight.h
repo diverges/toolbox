@@ -31,45 +31,75 @@ public:
     void SetWealth(const int val) { m_MoneyInBank = val; }
     void AddToWealth(const int val);
 
-    bool Thirsty() const;
-    void BuyAndDrinkAWhiskey() { m_Thirst = 0; m_MoneyInBank -= 2; }
+    bool Healthy() const;
+    void Damage(const int val) { m_Health -= val; if (m_Health < 0) m_Health = 0; }
+    void Heal() { m_Health = kMaxHealth; }
+
+    AI::StateMachine<Knight>* GetFSM() { return &m_FSM; }
 
 private:
-    //the amount of gold a miner must have before he feels comfortable
-    const int ComfortLevel = 5;
-    //the amount of nuggets a miner can carry
-    const int MaxNuggets = 3;
-    //above this value a miner is thirsty
-    const int ThirstLevel = 5;
-    //above this value a miner is sleepy
-    const int TirednessThreshold = 5;
+    const int kMaxHealth = 9;
+    const int kTirednessThreshold = 5;
 
     location m_Location;
     int m_GoldCarried;
     int m_MoneyInBank;
-    int m_Thirst;
+    int m_Health;
     int m_Fatigue;
 
-    std::unique_ptr<AI::StateMachine<Knight>> m_FSM;
+    AI::StateMachine<Knight> m_FSM;
 };
 
 //---------------------------------------------------------
 // States
 //
-class EnterDungeonAndFight : public AI::State<Knight>
+class GoToInnAndRest : public AI::State<Knight>
 {
 public:
-    EnterDungeonAndFight() = delete;
-    EnterDungeonAndFight(const EnterDungeonAndFight&) = delete;
-    EnterDungeonAndFight& operator=(const EnterDungeonAndFight&) = delete;
+    GoToInnAndRest() {};
+    GoToInnAndRest(const GoToInnAndRest&) = delete;
+    GoToInnAndRest& operator=(const GoToInnAndRest&) = delete;
 
     void Enter(Knight& knight) override;
     void Execute(Knight& knight) override;
     void Exit(Knight& knight) override;
 
-    static EnterDungeonAndFight* Instance() {
+    static GoToInnAndRest* Instance() {
+        static GoToInnAndRest _instance;
         return &_instance;
     };
-private:
-    static EnterDungeonAndFight _instance;
+};
+
+class EnterCavesAndFight : public AI::State<Knight>
+{
+public:
+    EnterCavesAndFight() {}
+    EnterCavesAndFight(const EnterCavesAndFight&) = delete;
+    EnterCavesAndFight& operator=(const EnterCavesAndFight&) = delete;
+
+    void Enter(Knight& knight) override;
+    void Execute(Knight& knight) override;
+    void Exit(Knight& knight) override;
+
+    static EnterCavesAndFight* Instance() {
+        static EnterCavesAndFight _instance;
+        return &_instance;
+    };
+};
+
+class SetupCampAndHeal : public AI::State<Knight>
+{
+public:
+    SetupCampAndHeal() {}
+    SetupCampAndHeal(const SetupCampAndHeal&) = delete;
+    SetupCampAndHeal& operator=(const SetupCampAndHeal&) = delete;
+
+    void Enter(Knight& knight) override;
+    void Execute(Knight& knight) override;
+    void Exit(Knight& knight) override;
+
+    static SetupCampAndHeal* Instance() {
+        static SetupCampAndHeal _instance;
+        return &_instance;
+    };
 };

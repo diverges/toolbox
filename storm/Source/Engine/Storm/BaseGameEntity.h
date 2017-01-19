@@ -21,6 +21,6 @@ namespace GameCore
         int m_ID;                   // Unique Entity ID
         static int m_iNextValidID;  // Updated every time a new entity is instantiated
 
-        void SetID(int val);        // Sets entity ID
+        void SetID(int val) { m_ID = val; }; // Sets entity ID
     };
 }

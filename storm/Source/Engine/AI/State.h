@@ -30,9 +30,9 @@ namespace AI
         {}
 
         // Initialize
-        void SetCurrentState(State<entity>& state)  { m_pCurrentState = state; }
-        void SetPreviousState(State<entity>& state) { m_pPreviousState = state; }
-        void SetGlobalState(State<entity>& state)   { m_pGlobalState = state; }
+        void SetCurrentState(State<entity>* state)  { m_pCurrentState = state; }
+        void SetPreviousState(State<entity>* state) { m_pPreviousState = state; }
+        void SetGlobalState(State<entity>* state)   { m_pGlobalState = state; }
 
         void Update()
         {
@@ -41,7 +41,7 @@ namespace AI
         }
 
         // Change to a new state, calline exit and enter logic.
-        void ChangeState(State<entity>& newState)
+        void ChangeState(State<entity>* newState)
         {
             m_pPreviousState = m_pCurrentState;
             m_pCurrentState->Exit(m_pOwner);
@@ -55,9 +55,9 @@ namespace AI
         }
 
         // Accessors
-        State<entity>* CurrentState()   const { return m_pCurrentState; }
-        State<entity>* PreviousState()  const { return m_pPreviousState; }
-        State<entity>* GlobalState()    const { return m_pGlobalState; }
+        State<entity>& CurrentState()   const { return m_pCurrentState; }
+        State<entity>& PreviousState()  const { return m_pPreviousState; }
+        State<entity>& GlobalState()    const { return m_pGlobalState; }
 
     private:
         entity& m_pOwner;   // reference to owner

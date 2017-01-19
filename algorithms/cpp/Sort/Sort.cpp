@@ -2,5 +2,6 @@
 
 int Sort::foo(int n)
 {
+    (n);
     return 0;
 }
