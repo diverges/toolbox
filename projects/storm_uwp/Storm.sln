@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StormGame", "Source\StormGame\StormGame.vcxproj", "{6A8B0493-B3D5-4080-AE5E-967C5558E6DF}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StormCore", "Source\StormCore\StormCore.vcxproj", "{FCA4D7E3-A3A2-4CAE-A7B7-02335C78A3C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM = Debug|ARM
@@ -33,6 +35,18 @@ Global
 		{6A8B0493-B3D5-4080-AE5E-967C5558E6DF}.Release|x86.ActiveCfg = Release|Win32
 		{6A8B0493-B3D5-4080-AE5E-967C5558E6DF}.Release|x86.Build.0 = Release|Win32
 		{6A8B0493-B3D5-4080-AE5E-967C5558E6DF}.Release|x86.Deploy.0 = Release|Win32
+		{FCA4D7E3-A3A2-4CAE-A7B7-02335C78A3C8}.Debug|ARM.ActiveCfg = Debug|ARM
+		{FCA4D7E3-A3A2-4CAE-A7B7-02335C78A3C8}.Debug|ARM.Build.0 = Debug|ARM
+		{FCA4D7E3-A3A2-4CAE-A7B7-02335C78A3C8}.Debug|x64.ActiveCfg = Debug|x64
+		{FCA4D7E3-A3A2-4CAE-A7B7-02335C78A3C8}.Debug|x64.Build.0 = Debug|x64
+		{FCA4D7E3-A3A2-4CAE-A7B7-02335C78A3C8}.Debug|x86.ActiveCfg = Debug|Win32
+		{FCA4D7E3-A3A2-4CAE-A7B7-02335C78A3C8}.Debug|x86.Build.0 = Debug|Win32
+		{FCA4D7E3-A3A2-4CAE-A7B7-02335C78A3C8}.Release|ARM.ActiveCfg = Release|ARM
+		{FCA4D7E3-A3A2-4CAE-A7B7-02335C78A3C8}.Release|ARM.Build.0 = Release|ARM
+		{FCA4D7E3-A3A2-4CAE-A7B7-02335C78A3C8}.Release|x64.ActiveCfg = Release|x64
+		{FCA4D7E3-A3A2-4CAE-A7B7-02335C78A3C8}.Release|x64.Build.0 = Release|x64
+		{FCA4D7E3-A3A2-4CAE-A7B7-02335C78A3C8}.Release|x86.ActiveCfg = Release|Win32
+		{FCA4D7E3-A3A2-4CAE-A7B7-02335C78A3C8}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

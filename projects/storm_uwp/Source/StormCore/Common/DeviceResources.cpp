@@ -1,4 +1,4 @@
-﻿#include "pch.h"
+﻿#include "StormStd.h"
 #include "DeviceResources.h"
 #include "DirectXHelper.h"
 

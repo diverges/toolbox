@@ -1,11 +1,11 @@
-﻿#include "pch.h"
+﻿#include "StormStd.h"
 #include "Sample3DSceneRenderer.h"
 
 #include "..\Common\DirectXHelper.h"
 #include <ppltasks.h>
 #include <synchapi.h>
 
-using namespace StormGame;
+using namespace GameCore;
 
 using namespace Concurrency;
 using namespace DirectX;
